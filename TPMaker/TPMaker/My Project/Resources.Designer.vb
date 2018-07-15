@@ -93,6 +93,17 @@ Namespace My.Resources
         '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
+        Friend ReadOnly Property d0b1fbcf89aa5e851b3c7e9d86c77f48816b909fa4d30cc98f82aad3be8a36f587f36d6ff3f09b9dda39a3ee5e6b4b0d3255bfef95601890afd8070926d2ff7cc2221445411baffbf8aa48f1() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("d0b1fbcf89aa5e851b3c7e9d86c77f48816b909fa4d30cc98f82aad3be8a36f587f36d6ff3f09b9dd"& _ 
+                        "a39a3ee5e6b4b0d3255bfef95601890afd8070926d2ff7cc2221445411baffbf8aa48f1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
         Friend ReadOnly Property Delete_40px_1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("Delete_40px_1", resourceCulture)
@@ -526,6 +537,16 @@ Namespace My.Resources
         Friend ReadOnly Property veröffentlichen2() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("veröffentlichen2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property wallpaper_main() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("wallpaper_main", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property

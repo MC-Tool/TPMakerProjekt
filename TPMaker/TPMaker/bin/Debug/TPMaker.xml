@@ -37,6 +37,11 @@ TPMaker
   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:TPMaker.My.Resources.Resources.d0b1fbcf89aa5e851b3c7e9d86c77f48816b909fa4d30cc98f82aad3be8a36f587f36d6ff3f09b9dda39a3ee5e6b4b0d3255bfef95601890afd8070926d2ff7cc2221445411baffbf8aa48f1">
+<summary>
+  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+</summary>
+</member>
 <member name="P:TPMaker.My.Resources.Resources.Delete_40px_1">
 <summary>
   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
@@ -253,6 +258,11 @@ TPMaker
 </summary>
 </member>
 <member name="P:TPMaker.My.Resources.Resources.veröffentlichen2">
+<summary>
+  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
+</summary>
+</member>
+<member name="P:TPMaker.My.Resources.Resources.wallpaper_main">
 <summary>
   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
 </summary>

@@ -104,8 +104,8 @@
     <Compile Include="Ersteller.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ersteller_List.vb" />
-    <Compile Include="file_system.vb" />
+    <Compile Include="Source\Ersteller_List.vb" />
+    <Compile Include="Source\file_system.vb" />
     <Compile Include="HS.vb">
       <SubType>Form</SubType>
     </Compile>
@@ -113,8 +113,8 @@
       <DependentUpon>HS.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="infos.vb" />
-    <Compile Include="ListDesigner.vb" />
+    <Compile Include="Source\infos.vb" />
+    <Compile Include="Source\ListDesigner.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -130,7 +130,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="MyFunctions.vb" />
+    <Compile Include="Source\MyFunctions.vb" />
     <Compile Include="Projekte.Designer.vb">
       <DependentUpon>Projekte.vb</DependentUpon>
     </Compile>
@@ -143,7 +143,7 @@
     <Compile Include="search_Texture.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Server_Handler.vb" />
+    <Compile Include="Source\Server_Handler.vb" />
     <Compile Include="Soundplayer.Designer.vb">
       <DependentUpon>Soundplayer.vb</DependentUpon>
     </Compile>
@@ -369,6 +369,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\transparent.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wallpaper_main.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\d0b1fbcf89aa5e851b3c7e9d86c77f48816b909fa4d30cc98f82aad3be8a36f587f36d6ff3f09b9dda39a3ee5e6b4b0d3255bfef95601890afd8070926d2ff7cc2221445411baffbf8aa48f1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
