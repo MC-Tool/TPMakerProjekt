@@ -1,9 +1,5 @@
 ﻿Imports Ionic.Zip
 Public Class ZIP
-    Private Sub ZIP_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
-
-    End Sub
     Public Function Get_Inhalt(Zip As String) As List(Of String)
         Try
             Dim l As New List(Of String)
