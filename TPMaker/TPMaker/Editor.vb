@@ -19,7 +19,6 @@ Public Class Editor
 
     Dim m_PanStartPoint As New Point 'for Pan Function
     Dim DrawRectangle As Boolean = False 'for draw rectangle function
-    Dim rect As Rectangle 'for draw rectangle function
     Dim DrawRectangle_Mouse_X_Start As Integer 'for draw rectangle function
     Dim DrawRectangle_Mouse_Y_Start As Integer 'for draw rectangle function
     Dim DrawRectangle_Mouse_X_End As Integer 'for draw rectangle function
@@ -156,32 +155,9 @@ Public Class Editor
 
     Private Sub pic_Paint(ByVal sender As Object,
                               ByVal e As System.Windows.Forms.PaintEventArgs) Handles Pic.Paint
-        If SelectToolStripMenuItem1.BorderStyle = BorderStyle.Fixed3D And MouseButtons = Windows.Forms.MouseButtons.Left Then
-            Dim mousex As Integer = DrawRectangle_Mouse_X_End - DrawRectangle_Mouse_X_Start
-            Dim mousey As Integer = DrawRectangle_Mouse_Y_End - DrawRectangle_Mouse_Y_Start
-            ' Up and Left
-            If mousex < 0 AndAlso mousey < 0 Then
-                rect = New Rectangle((New Point(DrawRectangle_Mouse_X_End, DrawRectangle_Mouse_Y_End)),
-                                             New Size(System.Math.Abs(mousex), System.Math.Abs(mousey)))
-            End If
-            'Down and Right
-            If mousex > 0 AndAlso mousey > 0 Then
-                rect = New Rectangle((New Point(DrawRectangle_Mouse_X_Start, DrawRectangle_Mouse_Y_Start)),
-                                                         New Size((mousex), (mousey)))
-            End If
-            'Up and Right
-            If mousex < 0 AndAlso mousey > 0 Then
-                rect = New Rectangle((New Point(DrawRectangle_Mouse_X_End, DrawRectangle_Mouse_Y_Start)),
-                                             New Size(System.Math.Abs(mousex), mousey))
-            End If
-            'Down and Left
-            If mousex > 0 AndAlso mousey < 0 Then
-                rect = New Rectangle((New Point(DrawRectangle_Mouse_X_Start, DrawRectangle_Mouse_Y_End)),
-                                             New Size(mousex, System.Math.Abs(mousey)))
-            End If
+        If SelectToolStripMenuItem1.BorderStyle = BorderStyle.Fixed3D Or rectangle.BorderStyle = BorderStyle.Fixed3D And MouseButtons = Windows.Forms.MouseButtons.Left Then
             Try
-
-                e.Graphics.DrawRectangle(Pens.Red, rect)
+                e.Graphics.DrawRectangle(Pens.Red, Get_selection_rectangle())
             Catch ex As Exception
             End Try
         End If
@@ -191,6 +167,61 @@ Public Class Editor
         End If
 
     End Sub
+    Private Sub Pic_MouseUp(sender As Object, e As MouseEventArgs) Handles Pic.MouseUp
+        If SelectToolStripMenuItem1.BorderStyle = BorderStyle.Fixed3D Then
+            Dim newimg As Bitmap = New Bitmap(Akt_bild.Width, Akt_bild.Height)
+            Using gr As Graphics = Graphics.FromImage(newimg)
+                gr.DrawImage(Akt_bild, New Rectangle(0, 0, Akt_bild.Width, Akt_bild.Height))
+                gr.DrawRectangle(Pens.Red, get_rectange_selection())
+            End Using
+            Show_Bild(newimg)
+        End If
+        If rectangle.BorderStyle = BorderStyle.Fixed3D Then
+            Dim newimg As Bitmap = New Bitmap(Akt_bild.Width, Akt_bild.Height)
+            Using gr As Graphics = Graphics.FromImage(newimg)
+                gr.DrawImage(Akt_bild, New Rectangle(0, 0, Akt_bild.Width, Akt_bild.Height))
+                Dim farbe As Color = AktFarbe.BackColor
+                Dim alpha As Integer = CInt(Math.Round(2.55 * Get_Deckkraft(), 0))
+                gr.FillRectangle(New SolidBrush(Color.FromArgb(alpha, farbe)), get_rectange_selection())
+            End Using
+            Show_Bild(newimg)
+        End If
+
+    End Sub
+    Private Function get_rectange_selection() As Rectangle
+        Dim aktrectangle As Rectangle = Get_selection_rectangle()
+        Dim koords_D As Point = Korrds_korrigieren(Get_Img_position_x(aktrectangle.X), Get_Img_position_y(aktrectangle.Y), 2)
+        Dim koord_C As Point = Korrds_korrigieren(Get_Img_position_x(aktrectangle.X) + aktrectangle.Width, Get_Img_position_y(aktrectangle.Y), 2)
+        Dim koord_B As Point = Korrds_korrigieren(Get_Img_position_x(aktrectangle.X) + aktrectangle.Width, Get_Img_position_y(aktrectangle.Y) + aktrectangle.Height, 2)
+        Dim koord_A As Point = Korrds_korrigieren(Get_Img_position_x(aktrectangle.X), Get_Img_position_y(aktrectangle.Y) + aktrectangle.Height, 2)
+        Return New Rectangle(koords_D.X, koords_D.Y, koord_C.X - koords_D.X, koord_A.Y - koords_D.Y)
+    End Function
+    Private Function Get_selection_rectangle() As Rectangle
+        Dim mousex As Integer = DrawRectangle_Mouse_X_End - DrawRectangle_Mouse_X_Start
+        Dim mousey As Integer = DrawRectangle_Mouse_Y_End - DrawRectangle_Mouse_Y_Start
+        Dim rect As Rectangle 'for draw rectangle function
+        ' Up and Left
+        If mousex < 0 AndAlso mousey < 0 Then
+            rect = New Rectangle((New Point(DrawRectangle_Mouse_X_End, DrawRectangle_Mouse_Y_End)),
+                                         New Size(System.Math.Abs(mousex), System.Math.Abs(mousey)))
+        End If
+        'Down and Right
+        If mousex > 0 AndAlso mousey > 0 Then
+            rect = New Rectangle((New Point(DrawRectangle_Mouse_X_Start, DrawRectangle_Mouse_Y_Start)),
+                                                     New Size((mousex), (mousey)))
+        End If
+        'Up and Right
+        If mousex < 0 AndAlso mousey > 0 Then
+            rect = New Rectangle((New Point(DrawRectangle_Mouse_X_End, DrawRectangle_Mouse_Y_Start)),
+                                         New Size(System.Math.Abs(mousex), mousey))
+        End If
+        'Down and Left
+        If mousex > 0 AndAlso mousey < 0 Then
+            rect = New Rectangle((New Point(DrawRectangle_Mouse_X_Start, DrawRectangle_Mouse_Y_End)),
+                                         New Size(mousex, System.Math.Abs(mousey)))
+        End If
+        Return rect
+    End Function
     Private Function pinsel_rectangle(koords As Point) As Rectangle
         Return New Rectangle(koords.X - ((get_pinsel_größe() * (akt_zoom / 100)) / 2), koords.Y - ((get_pinsel_größe() * (akt_zoom / 100)) / 2), get_pinsel_größe() * (akt_zoom / 100), get_pinsel_größe() * (akt_zoom / 100))
     End Function
@@ -203,6 +234,17 @@ Public Class Editor
 
         If Stift.BorderStyle = BorderStyle.Fixed3D Then
             Draw_with_stift(New Point(e.X, e.Y))
+        End If
+        If singlePixel.BorderStyle = BorderStyle.Fixed3D Then
+            Dim mittelpunkt As Point = Korrds_korrigieren(Get_Img_position_x(e.X), Get_Img_position_y(e.Y), 0)
+            Dim rect As Rectangle = New Rectangle(CInt(mittelpunkt.X), CInt(mittelpunkt.Y), 1 * (akt_zoom / 100), 1 * (akt_zoom / 100))
+            Dim newimg As Bitmap = New Bitmap(Akt_bild.Width, Akt_bild.Height)
+            Using gr As Graphics = Graphics.FromImage(newimg)
+                gr.DrawImage(Akt_bild, New Rectangle(0, 0, Akt_bild.Width, Akt_bild.Height))
+                gr.DrawRectangle(Pens.Red, rect)
+
+            End Using
+            Show_Bild(newimg)
         End If
     End Sub
     Private Sub Draw_with_stift(e As Point)
@@ -236,8 +278,6 @@ Public Class Editor
             End Using
 
             Show_Bild(oImage)
-            'original = oImage
-            'ZoomImage(akt_zoom)
         End If
     End Sub
 
@@ -295,13 +335,12 @@ Public Class Editor
         End If
         If Not Akt_bild() Is Nothing Then
             Reset_original(original.Width, original.Height)
-
         End If
 
         Dim newwidth As Integer = original.Width * (ZoomValue) / 100
         Dim newheight As Integer = original.Height * (ZoomValue / 100)
-
         Show_Bild(Neu_skalieren(newwidth, newheight))
+        ' Pic.Image = Neu_skalieren(newwidth, newheight)
         akt_zoom = ZoomValue
         Zoomprozent.Text = ZoomValue & "%"
         TrackBar1.Maximum = 2000
@@ -318,7 +357,9 @@ Public Class Editor
             g.DrawImage(Akt_bild, New Rectangle(0, 0, breite, höhe))
 
         End Using
+
         original = oImage
+
     End Sub
     Private Function Neu_skalieren(breite As Integer, höhe As Integer) As Bitmap
         Dim oImage As New Bitmap(breite, höhe)
@@ -328,8 +369,9 @@ Public Class Editor
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighQuality
             g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality
             g.DrawImage(original, New Rectangle(0, 0, breite, höhe))
-            Debug.Print(breite & "  " & höhe)
+            '  Debug.Print(breite & "  " & höhe)
         End Using
+
         Return oImage
     End Function
     Private Bildindex As Integer = 0
@@ -430,18 +472,18 @@ Public Class Editor
         End If
     End Sub
 
-    Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object,
-                                         ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles _
-                                         PrintDocument1.PrintPage
-        Dim oldimage As Bitmap = Akt_bild()
-        Dim adjustedimage As Bitmap
-        adjustedimage = CropBitmap(oldimage, rect.X, rect.Y, rect.Width, rect.Height)
-        Try
-            Clipboard.SetImage(adjustedimage)
-        Catch ex As Exception
-        End Try
-        e.Graphics.DrawImage(Clipboard.GetImage, 0, 0)
-    End Sub
+    'Private Sub PrintDocument1_PrintPage(ByVal sender As System.Object,
+    '                                     ByVal e As System.Drawing.Printing.PrintPageEventArgs) Handles _
+    '                                     PrintDocument1.PrintPage
+    '    Dim oldimage As Bitmap = Akt_bild()
+    '    Dim adjustedimage As Bitmap
+    '    adjustedimage = CropBitmap(oldimage, rect.X, rect.Y, rect.Width, rect.Height)
+    '    Try
+    '        Clipboard.SetImage(adjustedimage)
+    '    Catch ex As Exception
+    '    End Try
+    '    e.Graphics.DrawImage(Clipboard.GetImage, 0, 0)
+    'End Sub
 
     Private Sub LoadToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles LoadToolStripMenuItem1.Click
         Dim fs As FileStream
@@ -485,19 +527,19 @@ Public Class Editor
 
     End Sub
 
-    Private Sub CopyToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem1.Click
+    'Private Sub CopyToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles CopyToolStripMenuItem1.Click
 
-        If DrawRectangle Then
-            Dim oldimage As Bitmap = Akt_bild()
-            Dim adjustedimage As Bitmap
-            adjustedimage = CropBitmap(oldimage, rect.X, rect.Y, rect.Width, rect.Height)
-            Try
-                Clipboard.SetImage(adjustedimage)
-            Catch ex As Exception
-            End Try
-        End If
+    '    If DrawRectangle Then
+    '        Dim oldimage As Bitmap = Akt_bild()
+    '        Dim adjustedimage As Bitmap
+    '        adjustedimage = CropBitmap(oldimage, rect.X, rect.Y, rect.Width, rect.Height)
+    '        Try
+    '            Clipboard.SetImage(adjustedimage)
+    '        Catch ex As Exception
+    '        End Try
+    '    End If
 
-    End Sub
+    'End Sub
 
     Private Sub PanToolStripMenuItem1_Click_1(sender As Object, e As EventArgs) Handles PanToolStripMenuItem1.Click
         reset_werkzeuge()
@@ -515,7 +557,7 @@ Public Class Editor
         End If
     End Sub
     Private Function reset_werkzeuge()
-        Dim Werkzeuge() = New PictureBox() {PanToolStripMenuItem1, SelectToolStripMenuItem1, singlePixel, Stift, Farbwahl}
+        Dim Werkzeuge() = New PictureBox() {PanToolStripMenuItem1, SelectToolStripMenuItem1, singlePixel, Stift, Farbwahl, rectangle}
         For Each w In Werkzeuge
             w.BorderStyle = BorderStyle.None
         Next
@@ -704,6 +746,14 @@ Public Class Editor
 
     Private Sub singlePixel_Click(sender As Object, e As EventArgs) Handles singlePixel.Click
         reset_werkzeuge()
+        If singlePixel.BorderStyle = BorderStyle.None Then
+            singlePixel.BorderStyle = BorderStyle.Fixed3D
+            Pic.Cursor = New Cursor(My.Resources.select_pixel.Handle)
+        Else
+            singlePixel.BorderStyle = BorderStyle.None
+            Pic.Cursor = Cursors.Default
+        End If
+        Pic.Invalidate()
     End Sub
 
     Private Sub Editor_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
@@ -743,6 +793,22 @@ Public Class Editor
 
     Private Sub Pic_forward_Click(sender As Object, e As EventArgs) Handles Pic_forward.Click
         Pic_go_Vor()
+    End Sub
+
+    Private Sub Pic_Click(sender As Object, e As EventArgs) Handles Pic.Click
+
+    End Sub
+
+    Private Sub rectangle_Click(sender As Object, e As EventArgs) Handles rectangle.Click
+        reset_werkzeuge()
+        If rectangle.BorderStyle = BorderStyle.None Then
+            rectangle.BorderStyle = BorderStyle.Fixed3D
+            Pic.Cursor = Cursors.Cross
+        Else
+            rectangle.BorderStyle = BorderStyle.None
+            Pic.Cursor = Cursors.Default
+        End If
+        Pic.Invalidate()
     End Sub
 End Class
 

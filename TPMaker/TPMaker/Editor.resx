@@ -140,6 +140,9 @@
         gg==
 </value>
   </data>
+  <metadata name="ToolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>272, 17</value>
+  </metadata>
   <data name="SelectToolStripMenuItem1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAABGdBTUEAALGPC/xhBQAABGlJREFUaEPt
@@ -287,6 +290,14 @@
         vg8PhPB9eCCE78MDofZ9kg7X/sjg+/BACN+HB0L4PjwQat8n6XDtjwy+Dw+E8H14IITvwwOh9n2SDtf+
         yOD78EAI34cHQvg+PBBq3yfpcNMj036PTYH2e2wKtN9jU6D9LkmSJH2tdQNnSpQfmoIBywAAAABJRU5E
         rkJggg==
+</value>
+  </data>
+  <data name="rectangle.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAABGdBTUEAALGPC/xhBQAAAH1JREFUaEPt
+        ykENwEAAhMDzr6Umqqw1AH8u2Un4cWZmZibjeb8rUjQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQX
+        UzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXUzQXm5mZmYRzfiWm
+        IMbWcjFWAAAAAElFTkSuQmCC
 </value>
   </data>
 </root>

@@ -370,5 +370,8 @@
   <ItemGroup>
     <None Include="Resources\transparent.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select pixel.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>
