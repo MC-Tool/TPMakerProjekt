@@ -371,10 +371,14 @@
     <None Include="Resources\transparent.jpg" />
   </ItemGroup>
   <ItemGroup>
+<<<<<<< HEAD
     <None Include="Resources\wallpaper_main.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\d0b1fbcf89aa5e851b3c7e9d86c77f48816b909fa4d30cc98f82aad3be8a36f587f36d6ff3f09b9dda39a3ee5e6b4b0d3255bfef95601890afd8070926d2ff7cc2221445411baffbf8aa48f1.png" />
+=======
+    <None Include="Resources\select pixel.ico" />
+>>>>>>> 8146d9eed1ef6d11cad2a6d3a76a5da33a295a7e
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

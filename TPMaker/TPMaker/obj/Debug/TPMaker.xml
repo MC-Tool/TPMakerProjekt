@@ -227,6 +227,11 @@ TPMaker
   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
 </summary>
 </member>
+<member name="P:TPMaker.My.Resources.Resources.select_pixel">
+<summary>
+  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+</summary>
+</member>
 <member name="P:TPMaker.My.Resources.Resources.Server_52px">
 <summary>
   Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.

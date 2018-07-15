@@ -1,0 +1,83 @@
+gui.achievements=Erfolge
+gui.stats=Statistik
+
+stat.generalButton=Allgemein
+stat.blocksButton=Blöcke
+stat.itemsButton=Gegenstände
+
+stat.used=benutzt
+stat.mined=abgebaut
+stat.depleted=aufgebraucht
+stat.crafted=hergestellt
+
+stat.startGame=Spiele gestartet
+stat.createWorld=Welten erstellt
+stat.loadWorld=Spielstände geladen
+stat.joinMultiplayer=Spielen beigetreten
+stat.leaveGame=Spiele verlassen
+
+stat.playOneMinute=Minuten gespielt
+
+stat.walkOneCm=Gelaufene Entfernung
+stat.fallOneCm=Gefallene Entfernung
+stat.swimOneCm=Geschwommene Entfernung
+stat.flyOneCm=Geflogene Entfernung
+stat.climbOneCm=Gekletterte Entfernung
+stat.diveOneCm=Getauchte Entfernung
+stat.minecartOneCm=Zurückgelegte Entfernung in Lore
+stat.boatOneCm=Zurückgelegte Entfernung in Boot
+stat.pigOneCm=Zurückgelegte Entfernung auf Schwein
+stat.jump=Sprünge
+stat.drop=Gegenstände fallen gelassen
+
+stat.damageDealt=Ausgeteilter Schaden
+stat.damageTaken=Genommener Schaden
+stat.deaths=Anzahl der Tode
+stat.mobKills=Monster getötet
+stat.playerKills=Spieler getötet
+stat.fishCaught=Fische gefangen
+
+stat.mineBlock=%1$s abgebaut
+stat.craftItem=%1$s hergestellt
+stat.useItem=%1$s benutzt
+stat.breakItem=%1$s aufgebraucht
+
+achievement.get=Erfolg erhalten!
+
+achievement.taken=Freigeschaltet!
+
+achievement.requires=Benötigt '%1$s'
+achievement.openInventory=Aufräumen
+achievement.openInventory.desc=Drücken Sie '%1$sÔ, um Ihr Inventar zu öffnen.
+achievement.mineWood=Holzfäller
+achievement.mineWood.desc=Fällen Sie einen Baum und sammeln Sie mindestens einen Baumstamm auf.
+achievement.buildWorkBench=Heimwerker
+achievement.buildWorkBench.desc=Stellen Sie aus vier Holzbrettern eine Werkbank her.
+achievement.buildPickaxe=Glück auf!
+achievement.buildPickaxe.desc=Stellen Sie aus Stöcken und Holzbrettern eine Spitzhacke her.
+achievement.buildFurnace=Vorsicht, hei§!
+achievement.buildFurnace.desc=Stellen Sie aus acht Kopfsteinblöcken einen Ofen her.
+achievement.acquireIron=Verhüttung
+achievement.acquireIron.desc=Schmelzen Sie einen Block Eisenerz zu einem Eisenbarren ein.
+achievement.buildHoe=Ackerbau
+achievement.buildHoe.desc=Stellen Sie aus Stöcken und Holzbrettern eine Hacke her.
+achievement.makeBread=Bäcker
+achievement.makeBread.desc=Backen Sie aus Getreide ein Brot.
+achievement.bakeCake=Die Lüge
+achievement.bakeCake.desc=Getreide, Zucker, Milch und Eier!
+achievement.buildBetterPickaxe=Es geht immer besser!
+achievement.buildBetterPickaxe.desc=Stellen Sie eine bessere Spitzhacke her.
+achievement.cookFish=Köstlicher Fisch
+achievement.cookFish.desc=Fangen und kochen Sie einen Fisch.
+achievement.onARail=Ohne Verspätung
+achievement.onARail.desc=Entfernen Sie sich in einer Lore mindestens 1 km weit von Ihrem Ursprungsort.
+achievement.buildSword=Zeit zum Angriff!
+achievement.buildSword.desc=Stellen Sie aus Stöcken und Holzbrettern ein Schwert her.
+achievement.killEnemy=Monsterjäger
+achievement.killEnemy.desc=Greifen Sie ein Monster an und töten Sie es.
+achievement.killCow=Kuhmörder
+achievement.killCow.desc=Töten Sie eine Kuh und sammeln Sie mindestens ein Stück Leder ein.
+achievement.flyPig=Wenn Schweine fliegen
+achievement.flyPig.desc=Fliegen Sie auf einem Schwein von einer Klippe.
+achievement.snipeSkeleton=Das Duell
+achievement.snipeSkeleton.desc=Töten Sie ein Skelett mit einem Pfeil aus mindestens 50 Metern Entfernung.

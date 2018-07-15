@@ -472,6 +472,16 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Icon ähnlich wie (Symbol).
+        '''</summary>
+        Friend ReadOnly Property select_pixel() As System.Drawing.Icon
+            Get
+                Dim obj As Object = ResourceManager.GetObject("select_pixel", resourceCulture)
+                Return CType(obj,System.Drawing.Icon)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Sucht eine lokalisierte Ressource vom Typ System.Drawing.Bitmap.
         '''</summary>
         Friend ReadOnly Property Server_52px() As System.Drawing.Bitmap

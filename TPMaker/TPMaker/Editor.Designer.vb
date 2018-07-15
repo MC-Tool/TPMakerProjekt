@@ -22,6 +22,7 @@ Partial Class Editor
     'Das Bearbeiten mit dem Code-Editor ist nicht möglich.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Me.components = New System.ComponentModel.Container()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Editor))
         Me.Pic = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
@@ -82,6 +83,8 @@ Partial Class Editor
         Me.Pic_forward = New System.Windows.Forms.PictureBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.MetroPanelCategory1 = New MetroSuite.MetroPanelCategory()
+        Me.rectangle = New System.Windows.Forms.PictureBox()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         CType(Me.Pic, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.PanToolStripMenuItem1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -110,6 +113,7 @@ Partial Class Editor
         CType(Me.Pic_Back, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.Pic_forward, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.MetroPanelCategory1.SuspendLayout()
+        CType(Me.rectangle, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Pic
@@ -219,6 +223,7 @@ Partial Class Editor
         Me.PanToolStripMenuItem1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.PanToolStripMenuItem1.TabIndex = 2
         Me.PanToolStripMenuItem1.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.PanToolStripMenuItem1, "Frei Bewegen")
         '
         'SelectToolStripMenuItem1
         '
@@ -229,6 +234,7 @@ Partial Class Editor
         Me.SelectToolStripMenuItem1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.SelectToolStripMenuItem1.TabIndex = 3
         Me.SelectToolStripMenuItem1.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.SelectToolStripMenuItem1, "Erstelle ein Rechteckige Auswahl")
         '
         'Farbwahl
         '
@@ -239,6 +245,7 @@ Partial Class Editor
         Me.Farbwahl.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Farbwahl.TabIndex = 4
         Me.Farbwahl.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.Farbwahl, "Pipette - Wähle Farben aus dem Bild")
         '
         'Stift
         '
@@ -249,9 +256,7 @@ Partial Class Editor
         Me.Stift.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.Stift.TabIndex = 5
         Me.Stift.TabStop = False
-        '
-        'PrintDocument1
-        '
+        Me.ToolTip1.SetToolTip(Me.Stift, "Stift")
         '
         'Panel1
         '
@@ -553,6 +558,7 @@ Partial Class Editor
         Me.singlePixel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
         Me.singlePixel.TabIndex = 15
         Me.singlePixel.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.singlePixel, "Erstelle eine Auswahl von einzelnen Pixeln")
         '
         'TabControl3
         '
@@ -672,6 +678,7 @@ Partial Class Editor
         Me.MetroPanelCategory1.BackColor = System.Drawing.Color.Transparent
         Me.MetroPanelCategory1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.MetroPanelCategory1.BorderColor = System.Drawing.Color.FromArgb(CType(CType(98, Byte), Integer), CType(CType(98, Byte), Integer), CType(CType(98, Byte), Integer))
+        Me.MetroPanelCategory1.Controls.Add(Me.rectangle)
         Me.MetroPanelCategory1.Controls.Add(Me.Farbwahl)
         Me.MetroPanelCategory1.Controls.Add(Me.PanToolStripMenuItem1)
         Me.MetroPanelCategory1.Controls.Add(Me.singlePixel)
@@ -681,12 +688,23 @@ Partial Class Editor
         Me.MetroPanelCategory1.Font = New System.Drawing.Font("Segoe UI", 9.0!)
         Me.MetroPanelCategory1.GradientColor = System.Drawing.Color.White
         Me.MetroPanelCategory1.GradientPointA = New System.Drawing.Point(0, 0)
-        Me.MetroPanelCategory1.GradientPointB = New System.Drawing.Point(157, 37)
+        Me.MetroPanelCategory1.GradientPointB = New System.Drawing.Point(234, 37)
         Me.MetroPanelCategory1.LineGradientColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(98, Byte), Integer), CType(CType(163, Byte), Integer))
         Me.MetroPanelCategory1.Location = New System.Drawing.Point(79, 11)
         Me.MetroPanelCategory1.Name = "MetroPanelCategory1"
-        Me.MetroPanelCategory1.Size = New System.Drawing.Size(157, 37)
+        Me.MetroPanelCategory1.Size = New System.Drawing.Size(234, 37)
         Me.MetroPanelCategory1.TabIndex = 19
+        '
+        'rectangle
+        '
+        Me.rectangle.Image = CType(resources.GetObject("rectangle.Image"), System.Drawing.Image)
+        Me.rectangle.Location = New System.Drawing.Point(155, 9)
+        Me.rectangle.Name = "rectangle"
+        Me.rectangle.Size = New System.Drawing.Size(23, 23)
+        Me.rectangle.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.rectangle.TabIndex = 16
+        Me.rectangle.TabStop = False
+        Me.ToolTip1.SetToolTip(Me.rectangle, "Zeichne ein Rechteck in der gesetzten Farbe")
         '
         'Editor
         '
@@ -745,6 +763,7 @@ Partial Class Editor
         CType(Me.Pic_Back, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.Pic_forward, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MetroPanelCategory1.ResumeLayout(False)
+        CType(Me.rectangle, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -809,4 +828,6 @@ Partial Class Editor
     Friend WithEvents Pic_forward As PictureBox
     Friend WithEvents Label5 As Label
     Friend WithEvents MetroPanelCategory1 As MetroSuite.MetroPanelCategory
+    Friend WithEvents rectangle As PictureBox
+    Friend WithEvents ToolTip1 As ToolTip
 End Class
